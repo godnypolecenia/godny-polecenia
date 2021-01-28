@@ -1,0 +1,17 @@
+#
+#	SopiCMS Framework System v3
+#	-----------------------------------
+#	Copyright 2017 by Michał Wrzesiński
+#	konakt@webhome.pl
+#	webhome.pl
+#
+
+Options FollowSymLinks
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1&%{QUERY_STRING} [L,NC]
